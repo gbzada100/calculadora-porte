@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Porte - Polícia Investigativa</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+        url("policia-investigativa.png") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(20,20,20,0.9);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.8);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #f1c40f;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 5px;
+      border: none;
+      font-size: 15px;
+    }
+
+    select {
+      background: #1e1e1e;
+      color: #fff;
+    }
+
+    button {
+      background: #f1c40f;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      filter: brightness(1.1);
+    }
+
+    .resultado {
+      margin-top: 20px;
+      background: rgba(0,0,0,0.6);
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    .resultado p {
+      margin: 6px 0;
+    }
+
+    .destaque {
+      color: #f1c40f;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Calculadora de Porte</h2>
+
+    <label>Selecione o Porte</label>
+    <select id="porte">
+      <option value="">Selecione</option>
+      <option value="1500000">Porte 1 – 1.5kk</option>
+      <option value="3000000">Porte 2 – 3kk</option>
+      <option value="4000000">Porte 3 – 4kk</option>
+      <option value="6000000">Porte 4 – 6kk</option>
+    </select>
+
+    <button onclick="calcular()">CALCULAR</button>
+
+    <div class="resultado">
+      <p>Total: <span class="destaque">R$ <span id="total">0</span></span></p>
+      <p>40% Polícia Investigativa: <span class="destaque">R$ <span id="policia">0</span></span></p>
+      <p>60% Policial: <span class="destaque">R$ <span id="policial">0</span></span></p>
+    </div>
+  </div>
+
+  <script>
+    function calcular() {
+      const valor = Number(document.getElementById("porte").value);
+
+      if (!valor) {
+        alert("Seleciona o porte.");
+        return;
+      }
+
+      const policia = valor * 0.40;
+      const policial = valor * 0.60;
+
+      document.getElementById("total").innerText =
+        valor.toLocaleString("pt-BR");
+
+      document.getElementById("policia").innerText =
+        policia.toLocaleString("pt-BR");
+
+      document.getElementById("policial").innerText =
+        policial.toLocaleString("pt-BR");
+    }
+  </script>
+
+</body>
+</html>
